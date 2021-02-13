@@ -1,0 +1,27 @@
+x = 0
+y = 0
+z = 0
+t = 0
+r = 0
+g = 0
+h = 0
+j = 0
+def setup():
+    size(650,700)
+    frameRate(15)
+def draw():
+    background(0)
+    global x,y,z,t,r,g,h,j
+    translate(width/2, height/2)
+    x = x - 1
+    y = y - 1
+    z = z - 1
+    t = t + 1
+    r = r + 1
+    g = g - 1
+    h = h + 1
+    j = j + 1
+    circle(x,y,50)
+    circle(z,t,50)
+    circle(r,g,50)
+    circle(h,j,50)

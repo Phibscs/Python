@@ -1,0 +1,7 @@
+def setup():
+    size(650,700)
+    fill(243,252,5)
+    frameRate(30)
+    background(0)
+def draw():
+    circle(random(0,650),random(0,700),5)

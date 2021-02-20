@@ -1,0 +1,18 @@
+x = 0
+mode = 'right'
+def setup():
+    size(650,700)
+    frameRate(100)
+def draw():
+    background(255,255,255)
+    global x
+    global mode
+    circle(x,50,50)
+    if mode == 'right':
+        x += 1
+    elif mode == 'left':
+        x -= 1
+    if x==0 :
+        mode = 'right'
+    elif x ==650:
+        mode = 'left'

@@ -1,0 +1,12 @@
+x = ''
+def setup():
+    size(650,700)
+    fill(255,0,0)
+    textSize(30)
+    global x
+def draw():
+    background(255)
+    text(x,0,50)
+def keyTyped():
+    global x 
+    x += key

@@ -1,0 +1,14 @@
+x = 0
+def setup():
+    size(650,700)
+    fill(255,0,0)
+def draw():
+    global x 
+    background(255)
+    circle(325,350,x)
+def keyPressed():
+    global x
+    if keyCode == RIGHT:
+        x = x + 1
+    elif keyCode == LEFT:
+        x = x - 1

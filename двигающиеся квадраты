@@ -1,0 +1,11 @@
+x = 0
+def setup():
+    size(650,700)
+    background(255)
+    frameRate(300)
+def draw():
+    global x
+    x += 1
+    background(255)
+    for i in range(14):
+        square(x,i*50,50)

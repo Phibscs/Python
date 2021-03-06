@@ -1,0 +1,23 @@
+col = 8
+row = 8
+def setup():
+    size(col*50,row*50)
+    background(255)
+def draw():
+    color2 = 0
+    for y in range(row):
+        if color2 ==0:
+                fill(0)
+                color2 = 1
+        elif color2 == 1:
+            fill(255)
+            color2 = 0
+        for x in range(col):
+            if color2 ==0:
+                fill(0)
+                color2 = 1
+            elif color2 == 1:
+                fill(255)
+                color2 = 0
+            square(x*50,y*50,50)
+            

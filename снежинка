@@ -1,0 +1,23 @@
+def vetka():
+    line(0,0,100,0)
+    line(20,0,40,10)
+    line(80,0,100,10)
+    line(20,0,40,-10)
+    line(80,0,100,-10)
+
+def setup():
+    size(600,700)
+def draw():
+    snow(200,200,2)
+    
+def snow(x,y,scale2):
+    translate(x,y)
+    scale(scale2)
+    for i in range(12):
+        vetka()
+        rotate(radians(30))
+    if keyPressed:
+        if keyCode == :
+            scale2 += 0,2
+        if keyCode == DOWN:
+            scale2 -= 0,2

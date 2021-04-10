@@ -1,0 +1,39 @@
+class Gun:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def  draw_(self):
+            line(self.x,self.y,self.x,self.y-50)
+            line(self.x,self.y-50,self.x+25,self.y-50)
+            line(self.x+25,self.y-50,self.x+25,self.y-75)
+            line(self.x+25,self.y-75,self.x+35,self.y-75)
+            line(self.x+35,self.y-75,self.x+35,self.y-50)
+            line(self.x+35,self.y-50,self.x+60,self.y-50)
+            line(self.x+60,self.y-50,self.x+60,self.y)
+class Pulia:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def  draw_(self):
+        def pula(x,y):
+            rect(self.x,self.y,10,10)
+    def move(self):
+        pulia.y +=1
+gun = Gun(300,700)
+pulia = Pulia(200,200)
+def setup():
+    size(600,700)
+    background(255)
+def draw():
+    background(255)
+    gun.draw_()
+    pulia.draw_()
+def keyPressed():
+    global gun,pulia
+    if keyCode == LEFT:
+        gun.x -= 1
+    if keyCode == RIGHT:
+        gun.x += 1
+    if key == "SPACE":
+        pulia.y += 1
+        

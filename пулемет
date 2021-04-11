@@ -15,25 +15,29 @@ class Pulia:
         self.x = x
         self.y = y
     def  draw_(self):
-        def pula(x,y):
-            rect(self.x,self.y,10,10)
+        rect(self.x,self.y,10,10)
     def move(self):
-        pulia.y +=1
+        self.y -=1
 gun = Gun(300,700)
-pulia = Pulia(200,200)
+bullets =[]
 def setup():
     size(600,700)
     background(255)
 def draw():
+    global bullets
     background(255)
     gun.draw_()
-    pulia.draw_()
+
+    for bullet in bullets:
+        bullet.move()
+        bullet.draw_()
+
 def keyPressed():
-    global gun,pulia
+    global gun
     if keyCode == LEFT:
         gun.x -= 1
     if keyCode == RIGHT:
         gun.x += 1
-    if key == "SPACE":
-        pulia.y += 1
+    if key == ' ':
+        bullets.append(Pulia(gun.x , gun.y))
         

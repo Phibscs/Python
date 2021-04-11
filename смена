@@ -1,0 +1,24 @@
+lamp = 0
+def setup():
+    global smena2
+    size(600,700)
+    smena2 = [loadImage("t2.png"),loadImage("t3.png"),loadImage("ct.png"),loadImage("ct2.png")]
+    imageMode(CENTER)
+def draw():
+    global smena2
+    image(smena2[lamp],300,350)
+def keyPressed():
+    global lamp
+    if key=='1':
+        lamp = 0
+        background(255)
+    if key=='2':
+        lamp = 1
+        background(255)
+    if key=='3':
+        lamp = 2
+        background(255)
+    if key=='4':
+        lamp = 3
+        background(255)
+         

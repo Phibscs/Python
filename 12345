@@ -1,0 +1,56 @@
+import lib
+class Gun:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+        self.angle = 0
+        self.image_ = loadImage("pulemet.png")
+    def  draw_(self):
+        push()
+        angle = lib.angleToMouse(self.x,self.y)
+        translate(self.x,self.y)
+        rotate(radians(angle))
+        image(self.image_,0,0)
+        pop()
+    def rotation(self):
+        self.angle = lib.angleToMouse(self.x , self.y)
+class Pulia:
+    def __init__(self,x,y,x1,y1):
+        self.x = x
+        self.y = y
+        self.dx = (x1-x)/100
+        self.dy = (y1-y)/100
+        self.image__ = loadImage("pulemet.png")
+    def  draw_(self):
+        push()
+        angle = lib.angleToMouse(self.x,self.y)
+        translate(self.x,self.y)
+        rotate(radians(angle))
+        scale(0.1)
+        image(self.image__,0,0)
+        pop()
+    def move(self):
+        self.x += self.dx
+        self.y += self.dy
+bullets =[]
+def setup():
+    global gun
+    gun = Gun(300,700)
+    imageMode(CENTER)
+    size(600,700)
+def draw():
+    background(255)
+    global bullets
+    gun.draw_()
+    gun.rotation()
+    for bullet in bullets:
+        bullet.move()
+        bullet.draw_()
+def keyPressed():
+    global gun
+    if keyCode == LEFT:
+        gun.x -= 1
+    if keyCode == RIGHT:
+        gun.x += 1
+    if key == ' ':
+        bullets.append(Pulia(gun.x , gun.y , mouseX , mouseY))

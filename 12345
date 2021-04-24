@@ -32,17 +32,41 @@ class Pulia:
     def move(self):
         self.x += self.dx
         self.y += self.dy
+class Maska:
+    def __init__(self):
+        self.x = random(0,600)
+        self.y = 0
+        self.speed = random(2,6)
+        self.image__ = loadImage("medical-mask.png")
+    def draw_(self):
+        push()
+        translate(self.x,self.y)
+        scale(0.1)
+        image(self.image__,0,0)
+        pop()
+    def move(self):
+        self.y += self.speed
 bullets =[]
+masks = []
+v = []
 def setup():
-    global gun
+    global gun,masks
+    for i in range(10):
+        masks.append(Maska())
     gun = Gun(300,700)
     imageMode(CENTER)
     size(600,700)
+    
 def draw():
     background(255)
     global bullets
     gun.draw_()
     gun.rotation()
+    for maska in masks:
+        maska.draw_()
+        maska.move()
+        if maska.y >700:
+            maska.y = 0
     for bullet in bullets:
         bullet.move()
         bullet.draw_()

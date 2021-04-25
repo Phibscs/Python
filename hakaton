@@ -1,0 +1,132 @@
+#Переменные
+#Появление волны
+Tvolna= ceil(random(0,30))
+time= 0
+xc = 600#Город
+#Встречные волны о  города
+xvc = 500
+y = 300
+#Волна
+xv = 0
+#Дополнение
+v = 0
+w = 0
+e = 0
+
+oknox = 610
+oknoy = 160
+
+def setup():
+    size(1000,600)
+    frameRate(60)
+    
+def wolna():
+    fill(0,150,255)
+    rect(xv, y, 100,100)
+    push()
+    translate(60,20)
+    ellipse(xv,y-20,120,70)
+    pop()
+    
+def gorod():
+    #Отрисовка города
+    fill(100)
+    rect(600,400,100,-250)
+    fill(255,255,0)
+    rect(oknox,oknoy,20,30)
+    rect(oknox + 30,oknoy,20,30)
+    rect(oknox + 60,oknoy,20,30)
+    rect(oknox,oknoy + 45,20,30)
+    rect(oknox + 30,oknoy +45,20,30)
+    rect(oknox + 60,oknoy +45,20,30)
+    rect(oknox,oknoy +90,20,30)
+    rect(oknox + 30,oknoy +90,20,30)
+    rect(oknox + 60,oknoy +90,20,30)
+    rect(oknox,oknoy +135,20,30)
+    rect(oknox + 30,oknoy +135,20,30)
+    rect(oknox + 60,oknoy +135,20,30)
+    
+def gorod2():
+    #Отрисовка разрушенного города
+    push()
+    rotate(radians(70))
+    translate(-120,-830)
+    fill(100)
+    rect(600,400,100,-200)
+    fill(255,255,0)
+    rect(oknox,oknoy + 45,20,30)
+    rect(oknox + 30,oknoy +45,20,30)
+    rect(oknox + 60,oknoy +45,20,30)
+    rect(oknox,oknoy +90,20,30)
+    rect(oknox + 30,oknoy +90,20,30)
+    rect(oknox + 60,oknoy +90,20,30)
+    rect(oknox,oknoy +135,20,30)
+    rect(oknox + 30,oknoy +135,20,30)
+    rect(oknox + 60,oknoy +135,20,30)
+    fill(100)
+    rect(oknox-5,oknoy,100,-50)
+    pop()
+    
+def draw():
+    global Tvolna, time, x,xvc, y,v, xc, xv, w, oknox,oknoy, e
+    background(255)
+    time += 1#Таймер
+    
+    #Отрисовка города
+    if w == 0:
+        gorod()
+    else:
+        gorod2()
+    
+    #Отрисовка волны
+    if time >= Tvolna:
+        wolna()
+        xv += 1
+        
+    #Земля и море 
+    fill(0,191,255)
+    noStroke()
+    triangle(0,400,600,400,0,600)
+    push()
+    fill(0,255,0)
+    triangle(1000,600,1000,250,0,600)
+    pop()
+    
+    #Подсказка
+    fill(0)
+    textSize(20)
+    text(u"Запустить мельницу - ЛКМ",10,20) 
+        
+    #Запуск волны
+    fill(0,191,255)
+    if mousePressed:
+        v = 1
+    if v == 1:
+        circle(xvc,400,50)
+        xvc-=2
+    
+    #Проверка столкновения 
+    #Маленькая и большая волна
+    if v == 1:
+        if xvc-25<=xv+100:
+            xvc = 500
+            y += 10
+            v = 0
+    #Уничтожение большой волны
+    if y >= 400:
+        xv = -120 
+        y = 300
+        
+    if e == 1:
+        fill(0)
+        textSize(50)
+        text(u"Вы пытались", 200,200)
+        noLoop()   
+
+    print mouseY
+        
+    #Большая волна и город
+    if xv+100 >= xc:
+        w = 1
+        e = 1
+        xv = -120

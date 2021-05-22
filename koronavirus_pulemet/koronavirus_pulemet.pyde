@@ -55,30 +55,33 @@ c = 0
 state = 0
 def menu():
     img = loadImage("4845455.jpg")
+    image(img,300,350)
     fill(255,0,0)
-    rect(265,308,72,20)
-    rect(265,638,30,20)
+    rect(265,188,72,20)
+    rect(265,635,30,20)
     fill(0)
-    text("Start game",270,320)
+    text("Start game",270,200)
     text("Exit", 270,650)
 def setup():
     global gun,masks
-    for i in range(10):
-        pass
-        #masks.append(Maska())
     gun = Gun(300,700)
     imageMode(CENTER)
     size(600,700)
 def draw():
     background(237,255,0)
-    global bullets, c, state
+    global bullets, c, state,masks
+    
     if state == 0:
         menu()
-        if key == ENTER:
+        if mouseX>265 and mouseY>188 and mouseX<337 and mouseY<208 and mousePressed:
             state += 1
-        elif key == ESC:
+        elif mouseX>265 and mouseY>635 and mouseX<295 and mouseY<655 and mousePressed:
             exit()
     elif state == 1:
+        for z in range(0,50,2):
+            if c*c == z*z and len(masks) == z/2 :
+                masks.append(Maska())
+        
         gun.draw_()
         gun.rotation()
         for bullet in bullets:
@@ -88,7 +91,8 @@ def draw():
                 dx = maska.x - bullet.x
                 dy = maska.y - bullet.y
                 if sqrt(dx*dx+dy*dy) < 50:
-                    maska.y = -50
+                    maska.y = -random(50,150)
+                    maska.x = random(20,580)
                     c += 1
         for maska in masks:
             maska.draw_()

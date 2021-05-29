@@ -57,11 +57,14 @@ def menu():
     img = loadImage("4845455.jpg")
     image(img,300,350)
     fill(255,0,0)
-    rect(265,188,72,20)
-    rect(265,635,30,20)
+    rect(265,188,82,20)
+    rect(265,635,35,20)
     fill(0)
-    text("Start game",270,200)
-    text("Exit", 270,650)
+    textSize(13)
+    k = loadFont("CourierNewPSMT-13.vlw")
+    textFont(k)
+    text("Start game",268,203)
+    text("Exit", 268,650)
 def setup():
     global gun,masks
     gun = Gun(300,700)
@@ -73,9 +76,9 @@ def draw():
     
     if state == 0:
         menu()
-        if mouseX>265 and mouseY>188 and mouseX<337 and mouseY<208 and mousePressed:
+        if mouseX>265 and mouseY>188 and mouseX<347 and mouseY<208 and mousePressed:
             state += 1
-        elif mouseX>265 and mouseY>635 and mouseX<295 and mouseY<655 and mousePressed:
+        elif mouseX>265 and mouseY>635 and mouseX<300 and mouseY<655 and mousePressed:
             exit()
     elif state == 1:
         for z in range(0,50,2):
